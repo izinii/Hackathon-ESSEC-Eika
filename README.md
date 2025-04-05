@@ -10,17 +10,18 @@ The result : the customer is better protected, right when it matters.
 The insurer strengthens loyalty while increasing the relevance and timing of new offers.
 
 ### How it works
-1. We use a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis?). We complete it by filling it with more columns and fictional life events (e.g. buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as:
+1. We use a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis). We complete it by filling it with more columns and fictional life events (e.g. buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as:
 "Your client X just purchased a home — consider offering them a tailored home insurance plan.
 
 To see the detail of each column : see the pdf document named "  ".
 
 2. Adding the dataset in AWS S3 and Redshift
 
+3. Agents
 
-3. Backend
+4. Backend
 
-4. Frontend
+5. Frontend
 
 
 ### Model choice
