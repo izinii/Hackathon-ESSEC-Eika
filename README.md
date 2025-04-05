@@ -33,12 +33,17 @@ Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 We chose Amazon Titan Text Express for its balance of performance, reliability, and enterprise-grade data privacy. As part of AWS Bedrock, Titan ensures that all data processing complies with strict security and confidentiality standards, with no model training on customer data, and all inference happening in a controlled, fully managed environment. This makes it ideal for handling sensitive insurance-related information while delivering high-quality language understanding and generation.
 
 ### Backend & frontend
+The backend : 
+- Loads customer data from Redshift
+- Calls the AI agents (Profile -> Recommendations -> Message)
+- Returns the results : structured profile, personalized recommendations [and final message]
+- Connects with the Streamlit frontend, which displays everything to the user or the advisor
+
 We are building a fully interactive web application using Streamlit, designed for two distinct user roles (Client or Advisor). Users log in via a clean dual-role interface.
 - Clients : Can log in, view their profile (pulled from the database), and edit selected attributes/simulate real-life changes, save the changes.
 - Advisors : Can log in, see all clients and recent updates, get notified of changes, and trigger an AI assistant to get contextual insurance recommendations.
 
 We use Streamlit’s native hot-reload feature so the app updates instantly with every change.
-
 ...
 
 ### Final schema
