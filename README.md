@@ -12,8 +12,14 @@ The insurer strengthens loyalty while increasing the relevance and timing of new
 ### How it works
 1. We use a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis?). We complete it by filling it with more columns and fictional life events (e.g. buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as:
 "Your client X just purchased a home — consider offering them a tailored home insurance plan."
-2. 
 
+Columns : 
+
+
+3. 
+
+### Model choice
+We chose Amazon Titan Text Express for its balance of performance, reliability, and enterprise-grade data privacy. As part of AWS Bedrock, Titan ensures that all data processing complies with strict security and confidentiality standards, with no model training on customer data, and all inference happening in a controlled, fully managed environment. This makes it ideal for handling sensitive insurance-related information while delivering high-quality language understanding and generation.
 
 ### Business Model
 
