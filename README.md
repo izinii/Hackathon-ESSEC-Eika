@@ -20,6 +20,9 @@ To see the detail of each column : see the PDF document named "Explanations abou
 We then added the dataset in AWS S3 and Redshift.
 ...
 
+### Architecture
+(image)
+
 ### Agents
 Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
