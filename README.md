@@ -41,6 +41,16 @@ We use Streamlit’s native hot-reload feature so the app updates instantly with
 
 ...
 
+### Final schema
+
+Database (S3, Redshift)
+   ⇅
+AI Agents (via Bedrock with boto3)
+   ⇅
+Backend Python (orchestration)
+   ⇅
+Frontend Streamlit (UI)
+
 ### Business model
 A charged feature that is suggested to the client...
 ...
