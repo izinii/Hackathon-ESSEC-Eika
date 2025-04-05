@@ -10,7 +10,18 @@ The result : the customer is better protected, right when it matters.
 The insurer strengthens loyalty while increasing the relevance and timing of new offers.
 
 ### Today's market situation
-...
+The AI market in the insurance sector is expanding rapidly, offering significant opportunities for innovative solutions.
+According to a KPMG study, the global AI market in insurance could reach $79 billion by 2032, reflecting substantial growth potential. Insurance companies must prepare for this increase in their customer base and be ready to offer solutions that meet their clients' needs.
+
+More and more insurers recognize the benefits of AI in improving operational efficiency and customer experience. Companies like Generali, MAIF, and AXA have already started integrating AI to offer personalized and optimized services.
+
+AI analyzes customer data to provide tailored products, enhancing satisfaction, loyalty, and retention. They can also make process automation with tasks such as claims management and underwriting that can be automated, reducing costs and human errors. AI also helps anticipate customer needs and assess risks more accurately, strengthening insurers' competitiveness.
+Despite the advantages, challenges remain, including data quality, ethical concerns, and regulatory compliance. Insurers must address these aspects carefully to ensure successful AI adoption and acceptance from both customers and employees.
+
+By integrating AI, our solution will provide real-time personalized recommendations to sales agents, addressing the growing demand for tailored customer experiences. It aligns perfectly with current trends aimed at enhancing efficiency and personalization in insurance services. Our goal is to empower insurance advisors with more effective and relevant recommendations. By leveraging CRM data, our solution will detect life changes and suggest tailored advice to sales agents when an opportunity arises.
+
+Many competitors focus on automating claims processing or underwriting. Our solution, however, delivers real-time proactive recommendations. It considers real-time changes in customer profiles, such as life events (moving, having a child, or approaching retirement) and generates relevant recommendations for sales agents. The tool seamlessly integrates with existing CRM systems (like Salesforce), ensuring an intuitive and smooth experience for agents without requiring process overhauls. Instead of introducing yet another tool or overwhelming agents with unnecessary information, our solution presents tailored recommendations directly within their CRM. Sales agents can choose to act on these insights and contact the customer or disregard them based on their own assessment.
+
 
 ### Database
 We use a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis). We complete it by filling it with more columns and fictional life events (e.g. buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as : "Your client X just purchased a home — consider offering them a tailored home insurance plan." 
