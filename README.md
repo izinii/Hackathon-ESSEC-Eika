@@ -1,2 +1,38 @@
 # Hackathon-ESSEC-Eika
-T
+
+Team members : Emma LEGRAND, Antoine VANSIELEGHEM, Kylie WU, Ilan ZINI
+
+Track : Industry
+
+Today, most insurance contracts evolve on fixed dates, with little consideration for the actual life events of the customer.
+Our solution introduces an intelligent AI system that detects key life moments, such as moving to a new home, having a child, or switching to remote work, and automatically triggers a targeted review of the customer’s insurance contract.
+The result : the customer is better protected, right when it matters.
+The insurer strengthens loyalty while increasing the relevance and timing of new offers.
+
+### How it works
+1. We use a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis?). We complete it by filling it with more columns and fictional life events (e.g. buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as:
+"Your client X just purchased a home — consider offering them a tailored home insurance plan.
+
+To see the detail of each column : see the pdf document named "  ".
+
+2. Adding the dataset in AWS S3 and Redshift
+
+
+3. Backend
+
+4. Frontend
+
+
+### Model choice
+We chose Amazon Titan Text Express for its balance of performance, reliability, and enterprise-grade data privacy. As part of AWS Bedrock, Titan ensures that all data processing complies with strict security and confidentiality standards, with no model training on customer data, and all inference happening in a controlled, fully managed environment. This makes it ideal for handling sensitive insurance-related information while delivering high-quality language understanding and generation.
+
+### Business Model
+
+
+
+### About confidentiality
+
+
+
+###
+
