@@ -32,7 +32,7 @@ We then added the dataset in AWS S3 and Redshift.
 ...
 
 ### Architecture
-(image)
+![Architecture](Architecture.png)
 
 ### Agents
 Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
@@ -41,7 +41,7 @@ Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
 ...
 
-We chose Amazon Titan Text Express for its balance of performance, reliability, and enterprise-grade data privacy. As part of AWS Bedrock, Titan ensures that all data processing complies with strict security and confidentiality standards, with no model training on customer data, and all inference happening in a controlled, fully managed environment. This makes it ideal for handling sensitive insurance-related information while delivering high-quality language understanding and generation.
+We chose the models : 
 
 ### Backend & frontend
 The backend : 
