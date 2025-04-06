@@ -3,43 +3,8 @@ import pandas as pd
 import sqlite3
 import time
 import json
-import os
-import re  # For safe ClientID extraction
-from ai_agents import final_run
 from init_db import import_database
-
-
-
-def run_frontend(client_id):
-    """
-    Exécute les agents IA (A1 à D) pour un client donné et affiche les résultats dans Streamlit.
-    """
-    st.session_state["run_agents_for"] = None  # Reset après lancement
-    with st.spinner("Running AI agents..."):
-        try:
-            results = final_run()  # Appelle ta nouvelle version avec agents A1-D + email
-
-            st.success("✅ AI agents have completed the recommendation process.")
-
-            st.subheader("🧠 Agent A1 (Claude)")
-            st.code(results.get("A1 (Claude)", "No result"), language="markdown")
-
-            st.subheader("🤖 Agent A2 (Mistral)")
-            st.code(results.get("A2 (Mistral)", "No result"), language="markdown")
-
-            st.subheader("🧩 Agent B - Consensus Recommendation")
-            st.code(results.get("Consensus", "No result"), language="markdown")
-
-            st.subheader("🕵️ Agent C - Reverse Validator")
-            st.code(results.get("Agent C", "No result"), language="markdown")
-
-            st.subheader("📧 Agent D - Final Email Message")
-            st.code(results.get("Email", "No result"), language="markdown")
-
-            st.success("📨 Email successfully sent via MailHog.")
-
-        except Exception as e:
-            st.error(f"An error occurred while running the AI agents: {e}")
+from backend import run_frontend
 
 
 # Paths
@@ -58,10 +23,12 @@ def init_session():
 
 init_session()
 
-# --- SQLite functions ---
+
+# --- SQLite function ---
 def get_conn():
     return sqlite3.connect(AUTH_DB, check_same_thread=False)
 
+# --- Login function ---
 def login_user(username, password):
     conn = get_conn()
     cur = conn.cursor()
@@ -76,6 +43,8 @@ def login_user(username, password):
             "data": json.loads(row[4]) if row[4] else {}
         }
     return None
+
+
 
 # --- Login Page ---
 if not st.session_state.logged_in:
@@ -103,6 +72,7 @@ if not st.session_state.logged_in:
     st.stop()
 
 
+
 # --- Logged In Views ---
 if st.session_state.logged_in:
     user = st.session_state.user_info
@@ -128,10 +98,7 @@ if st.session_state.logged_in:
             st.stop()
 
         df = import_database("SELECT * FROM clients_database order by client_id;")
-        df["client_id"] = df["client_id"].astype(int)  # ✅ cast en int
-
-        print("CCCCCCCCCCCCCCCCCCCCC :", client_id)
-        print(df.dtypes)  # Pour vérifier que client_id est bien en int
+        df["client_id"] = df["client_id"].astype(int) 
 
         filtered = df[df["client_id"] == client_id]
 
@@ -140,8 +107,6 @@ if st.session_state.logged_in:
             st.stop()
 
         client_data = filtered.iloc[0].to_dict()
-        print("BBBBBBBBBBBBBBBBBBBBBBBBBB\n\n")
-        print(client_data)
 
 
         st.markdown("### Update your information")
@@ -178,6 +143,7 @@ if st.session_state.logged_in:
             "Annual_Income": "Annual Income (USD)",
             "Health_History": "Health History Summary"
         }
+
 
         # UX: Logical field grouping
         with st.expander("Housing & Transportation"):
@@ -243,42 +209,6 @@ if st.session_state.logged_in:
 
     # === ADVISOR DASHBOARD ===
     elif user["role"] == "admin":
-        from ai_agents import final_run
-
-        def run_frontend():
-            """
-            Exécute les agents IA (A1 à D) et affiche les résultats dans Streamlit.
-            """
-            st.session_state["run_agents_for"] = False  # Reset
-            with st.spinner("Running AI agents..."):
-                try:
-                    results = final_run()
-
-                    if results is None:
-                        st.error("The final_run() function did not return any results.")
-                        return
-
-                    st.success("AI agents have completed the recommendation process.")
-
-                    st.subheader("🧠 Agent A1 (Claude)")
-                    st.code(results.get("A1 (Claude)", "No result"), language="markdown")
-
-                    st.subheader("🤖 Agent A2 (Mistral)")
-                    st.code(results.get("A2 (Mistral)", "No result"), language="markdown")
-
-                    st.subheader("🧩 Agent B - Consensus Recommendation")
-                    st.code(results.get("Consensus", "No result"), language="markdown")
-
-                    st.subheader("🕵️ Agent C - Reverse Validator")
-                    st.code(results.get("Agent C", "No result"), language="markdown")
-
-                    st.subheader("📧 Agent D - Final Email Message")
-                    st.code(results.get("Email", "No result"), language="markdown")
-
-                    st.success("📨 Email successfully sent via MailHog.")
-
-                except Exception as e:
-                    st.error(f"An error occurred while running the AI agents: {e}")
 
         # --- INTERFACE ADMIN ---
         st.title("Advisor Dashboard")
@@ -293,4 +223,3 @@ if st.session_state.logged_in:
 
         if st.session_state.get("run_agents_for", False):
             run_frontend()
-

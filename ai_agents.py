@@ -7,18 +7,19 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-# ---- CONFIGURATION AWS ----
+
+# ---- AWS CONFIGURATION ----
 AWS_REGION = "us-west-2"
 DATABASE = 'dev'
 WORKGROUP_NAME = 'redshift-wg-hackathon'
 
-# ---- INITIALISATION DES CLIENTS ----
+# ---- CLIENT INITIALISATION ----
 bedrock = boto3.client("bedrock-runtime", region_name=AWS_REGION)
 redshift_client = boto3.client("redshift-data", region_name=AWS_REGION)
 
 
 
-# ---- FONCTION POUR RÉCUPÉRER UN ÉCHANTILLON ----
+# ---- FUNCTION TO RECOVER A SAMPLE OF OUR DATABASE ----
 def get_table_sample():
     sql_query = "SELECT * FROM clients_database WHERE Last_Account_Update = 1;"
     try:
@@ -51,14 +52,14 @@ def get_table_sample():
 
 
 
-# ---- LECTURE DE PDF ----
+# ---- PDF READING AND CONVERT TO TEXT FILE ----
 def load_pdf_text(path):
     reader = PdfReader(path)
     return "\n".join(page.extract_text() for page in reader.pages if page.extract_text())
 
 
 
-# ---- GÉNÉRATION DU PROMPT ----
+# ---- PROMPT GENERATION ----
 def create_prompt(client_rows, column_doc, contracts_doc):
     header = (
         "You are an AI agent working for an insurance company.\n"
@@ -84,9 +85,9 @@ def create_prompt(client_rows, column_doc, contracts_doc):
 
 
 
-# ---- INVOCATION DE CLAUDE ----
+# ---- CLAUDE MODEL ----
 def invoke_claude(prompt, temperature=0.3, model_id="anthropic.claude-3-5-haiku-20241022-v1:0"):
-    print("🚀 Running Agent A1 (Claude)...")
+    print("Running Agent A1 (Claude)...")
     request_body = {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 3000,
@@ -109,9 +110,9 @@ def invoke_claude(prompt, temperature=0.3, model_id="anthropic.claude-3-5-haiku-
 
 
 
-# ---- INVOCATION DE MISTRAL ----
+# ---- MISTRAL AI MODEL----
 def invoke_mistral(prompt, temperature=0.5, model_id="mistral.mistral-large-2407-v1:0"):
-    print("🚀 Running Agent A2 (Mistral)...")
+    print("Running Agent A2 (Mistral)...")
     request_body = {
         "prompt": prompt,
         "max_tokens": 1000,
@@ -128,7 +129,6 @@ def invoke_mistral(prompt, temperature=0.5, model_id="mistral.mistral-large-2407
         )
         result = json.loads(response['body'].read())
         
-        # ✅ Correction ici
         if "generation" in result:
             return result["generation"]
         elif "outputs" in result:
@@ -141,7 +141,7 @@ def invoke_mistral(prompt, temperature=0.5, model_id="mistral.mistral-large-2407
 
 
 
-# ---- LANCEMENT DES AGENTS A1 & A2 ----
+# ---- AI AGENTS A1 & A2 ----
 def run_agents_a1_claude_a2_mistral():
     client_rows = get_table_sample()
     if not isinstance(client_rows, list):
@@ -161,8 +161,11 @@ def run_agents_a1_claude_a2_mistral():
 
     return results
 
+
+
+# ---- AI AGENT B ----
 def run_agent_b_consensus(a1_output, a2_output):
-    print("🧠 Running Agent B (Consensus Synthesizer)...")
+    print("Running Agent B (Consensus Synthesizer)...")
 
     prompt = f"""
 You are Agent B, a senior insurance decision reviewer.
@@ -172,7 +175,7 @@ You receive two independent contract recommendation reports for the same clients
 - Agent A2 (Mistral): {a2_output}
 
 Your task:
-For each client mentioned, compare both agents’ recommendations.
+For each client mentioned, compare both agents' recommendations.
 
 If both agents suggest the same contract (even phrased differently), confirm it.
 
@@ -209,8 +212,10 @@ Reasoning: <why this contract was chosen over the other or confirmed>
         return f"[Agent B] Error: {str(e)}"
 
 
+
+# ---- AI AGENT C ----
 def run_agent_c_verifier(consensus_output, client_data, column_doc, contracts_doc):
-    print("🔎 Running Agent C (Reverse Engineering Auditor)...")
+    print("Running Agent C (Reverse Engineering Auditor)...")
 
     prompt = f"""
 You are Agent C, an independent insurance auditor AI.
@@ -258,8 +263,10 @@ Here is the final recommendation to validate:
         return f"[Agent C] Error: {str(e)}"
     
 
+
+# ---- AI AGENT C ----
 def run_agent_d_generate_email(consensus_output):
-    print("✉️ Running Agent D (Email Generator)...")
+    print("Running Agent D (Email Generator)...")
 
     prompt = f"""
 You are a professional assistant writing emails for an insurance advisor.
@@ -300,23 +307,26 @@ Only return the **email body**, no greeting or signature.
     except Exception as e:
         return f"[Agent D] Error: {str(e)}"
 
+
+
+# ---- FUNCTION TO SEND EMAILS ----
 def send_email_mailhog(sender_email, recipient_email, subject, body):
     msg = MIMEText(body)
     msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = recipient_email
 
-    print("\n📤 Sending email via MailHog SMTP on localhost:1025...")
+    print("\nSending email via MailHog SMTP on localhost:1025...")
     try:
         with smtplib.SMTP('localhost', 1025) as server:
             server.sendmail(sender_email, [recipient_email], msg.as_string())
-        print("✅ Email successfully sent to MailHog inbox.")
+        print("Email successfully sent to MailHog inbox.")
     except Exception as e:
-        print("❌ Failed to send email via MailHog:", str(e))
+        print("Failed to send email via MailHog:", str(e))
 
 
 
-
+# ---- PIPELINE TO RUN EVERYTHING (FOR THE FRONTEND) ----
 def final_run(): 
     # Lancer A1 et A2 en parallèle
     results = run_agents_a1_claude_a2_mistral()
@@ -355,7 +365,6 @@ def final_run():
         body=email_body
     )
 
-
     return {
         "A1 (Claude)": results.get("A1 (Claude)", ""),
         "A2 (Mistral)": results.get("A2 (Mistral)", ""),
@@ -363,9 +372,6 @@ def final_run():
         "Agent C": agent_c_output,
         "Email": email_body
     }
-
-
-
 
 
 if __name__ == "__main__":

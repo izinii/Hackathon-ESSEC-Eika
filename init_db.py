@@ -3,19 +3,18 @@ import pandas as pd
 import json
 import time
 import boto3
-from IPython.display import display
-import os
+
 
 # === CONFIGURATION ===
-#CSV_PATH = "insurance_csv.csv"     # Ton fichier de données clients
-DB_PATH = "users.db"               # Base SQLite à générer
-
+DB_PATH = "users.db" # SQLite database to generate
 
 
 client = boto3.client('redshift-data', region_name='us-west-2')
 database = 'dev'
 workgroup_name = 'redshift-wg-hackathon'
 
+
+# === IMPORT THE DATABASE ===
 def import_database(query):
     try:
         response = client.execute_statement(
@@ -47,11 +46,13 @@ def import_database(query):
 
 df = import_database("SELECT * FROM clients_database order by client_id;")
 
-# === CRÉER / RÉINITIALISER LA BASE ===
+
+
+# === CREATE / RESET THE DATABASE ===
 conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
-cursor.execute("DROP TABLE IF EXISTS users")  # Nettoyage
+cursor.execute("DROP TABLE IF EXISTS users")  # Cleaning
 cursor.execute("""
     CREATE TABLE users (
         user_id NUMBER PRIMARY KEY,
@@ -62,20 +63,20 @@ cursor.execute("""
     )
 """)
 
-# === AJOUTER UN ADMIN ===
+# === ADD ADMIN ===
 cursor.execute("""
     INSERT INTO users (user_id, username, password, role, data)
     VALUES (?, ?, ?, ?, ?)
 """, ("admin001", "advisor", "adminpass", "admin", None))
 
-# === AJOUTER TOUS LES CLIENTS DU CSV ===
+# === ADD ALL THE CUSTOMERS OF THE DATABASE ===
 for _, row in df.iterrows():
     client_id = str(row["client_id"])
     username = f"user{client_id}"
     password = f"client{client_id}"
     role = "client"
 
-    # Exclure Client_ID des données stockées
+    # Exclude Client_ID from stored data
     client_data = row.to_dict()
     client_data.pop("client_id", None)
 
@@ -85,8 +86,10 @@ for _, row in df.iterrows():
         VALUES (?, ?, ?, ?, ?)
     """, (client_id, username, password, role, json.dumps(client_data)))
 
-# === ENREGISTRER ET FERMER ===
+
+
+# === SAUVEGARDE ET FERMETURE ===
 conn.commit()
 conn.close()
 
-print("✅ users.db has been successfully generated.")
+print("users.db has been successfully generated !!!!")
