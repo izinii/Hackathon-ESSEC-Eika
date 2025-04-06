@@ -90,3 +90,13 @@ This model delivers strong value to insurers while generating a stable, diversif
 
 4. **Scalability**  
    - Optimize the architecture for handling larger datasets and higher user traffic.  
+
+
+
+### Links 
+
+- Dataset (Kaggle): https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis
+
+- Demonstration Video (Youtube): https://youtu.be/ebffU6SDm9Y
+
+- Submit Form: https://devpost.com/software/assurflow
