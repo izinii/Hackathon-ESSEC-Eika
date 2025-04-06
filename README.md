@@ -9,22 +9,19 @@ Our solution (B2B) introduces an intelligent AI system that detects key life mom
 The result : the customer is better protected, right when it matters.
 The insurer strengthens loyalty while increasing the relevance and timing of new offers.
 
-### Today's market situation
-The AI market in the insurance sector is expanding rapidly, offering significant opportunities for innovative solutions.
-According to a KPMG study, the global AI market in insurance could reach $79 billion by 2032, reflecting substantial growth potential. Insurance companies must prepare for this increase in their customer base and be ready to offer solutions that meet their clients' needs.
+### Market Context
+The AI market in the insurance sector is expanding rapidly. According to a KPMG study, the global AI market in insurance could reach $79 billion by 2032, reflecting substantial growth potential. Insurance companies must prepare for this increase in their customer base and be ready to offer solutions that meet their clients' needs.
 
-More and more insurers recognize the benefits of AI in improving operational efficiency and customer experience. Companies like Generali, MAIF, and AXA have already started integrating AI to offer personalized and optimized services.
+More and more insurers recognize the benefits of AI in improving operational efficiency and customer experience. Companies like Generali, MAIF, and AXA have already started integrating AI to offer optimized services.
 
-AI analyzes customer data to provide tailored products, enhancing satisfaction, loyalty, and retention. They can also make process automation with tasks such as claims management and underwriting that can be automated, reducing costs and human errors. AI also helps anticipate customer needs and assess risks more accurately, strengthening insurers' competitiveness.
-Despite the advantages, challenges remain, including data quality, ethical concerns, and regulatory compliance. Insurers must address these aspects carefully to ensure successful AI adoption and acceptance from both customers and employees.
+AI enables personalized product recommendations based on customer data, an automation of tasks like claims handling and underwriting and a better risk assessment and customer retention.
 
-By integrating AI, our solution will provide real-time personalized recommendations to sales agents, addressing the growing demand for tailored customer experiences. It aligns perfectly with current trends aimed at enhancing efficiency and personalization in insurance services. Our goal is to empower insurance advisors with more effective and relevant recommendations. By leveraging CRM data, our solution will detect life changes and suggest tailored advice to sales agents when an opportunity arises.
+However, challenges remain around data quality, ethics, and compliance.
 
-Many competitors focus on automating claims processing or underwriting. Our solution, however, delivers real-time proactive recommendations. It considers real-time changes in customer profiles, such as life events (moving, having a child, or approaching retirement) and generates relevant recommendations for sales agents. The tool seamlessly integrates with existing CRM systems (like Salesforce), ensuring an intuitive and smooth experience for agents without requiring process overhauls. Instead of introducing yet another tool or overwhelming agents with unnecessary information, our solution presents tailored recommendations directly within their CRM. Sales agents can choose to act on these insights and contact the customer or disregard them based on their own assessment.
+Unlike competitors focused on claims or underwriting, AssurFlow provides real-time, proactive insurance recommendations to sales agents based on life events (for instance : moving, retirement, having a child). Instead of introducing yet another tool or overwhelming agents with unnecessary information, our solution presents tailored recommendations directly within their CRM. Sales agents can choose to act on these insights and contact the customer or disregard them based on their own assessment.
 
-
-### Database
-We use a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis). We complete it by filling it with more columns and fictional life events (e.g. buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as : "Your client X just purchased a home — consider offering them a tailored home insurance plan." 
+### Database (à améliorer)
+We used a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis). We completed it by filling it with more columns and fictional life events (for instance buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as : "Your client X just purchased a home — consider offering them a tailored home insurance plan." 
 
 To see the detail of each column : see the PDF document named "Explanations about each columns of the clients dataset".
 
@@ -34,7 +31,7 @@ We then added the dataset in AWS S3 and Redshift.
 ### Architecture
 ![Architecture](Architecture.png)
 
-### Agents
+### Agents (à améliorer)
 Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
 + PDF document named "The different types of insurance contracts and details".
@@ -43,7 +40,7 @@ Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
 We chose the models : 
 
-### Backend & frontend
+### Backend & frontend (à améliorer)
 The backend : 
 - Loads customer data from Redshift
 - Calls the AI agents (Profile -> Recommendations -> Message)
@@ -57,7 +54,7 @@ We are building a fully interactive web application using Streamlit, designed fo
 We use Streamlit’s native hot-reload feature so the app updates instantly with every change.
 ...
 
-### Final schema
+### Final schema (à modifier ?)
 
 Database (S3, Redshift)
    ⇅
@@ -80,5 +77,8 @@ This model delivers strong value to insurers while generating a stable, diversif
 
 
 
-###
+### UX/UI prototype (Figma)
+[https://www.figma.com/proto/9PYtKRSmSfxNUBcYdC8OR6/Assur-Flow-Prototype-dev-version?node-id=0-1&t=ZEaL5GMef2NjhYB3-1](https://www.figma.com/proto/9PYtKRSmSfxNUBcYdC8OR6/Assur-Flow-Prototype-dev-version?node-id=0-1&t=ZEaL5GMef2NjhYB3-1)
 
+### Enhancements
+Use React for instance, with API calls etc.
