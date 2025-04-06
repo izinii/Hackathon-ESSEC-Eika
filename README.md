@@ -1,8 +1,10 @@
 # Hackathon-ESSEC-Eika
 
+![Architecture](Documents/image_readme.png)
+
 Team members : Emma LEGRAND (EMLV), Antoine VANSIELEGHEM (ESILV), Kylie WU (ESILV), Ilan ZINI (ESILV)
 
-Hackaton Track : Industry
+Hackaton Track : **Industry**
 
 Today, most insurance contracts evolve on fixed dates, with little consideration for the actual life events of the customer.
 Our solution (B2B) introduces an intelligent AI system that detects key life moments, such as moving to a new home, having a child, or switching to remote work, and automatically triggers a targeted review of the customer’s insurance contract.
@@ -26,7 +28,7 @@ We used a customer database from Kaggle (https://www.kaggle.com/datasets/stealth
 To see the detail of each column : see the PDF document named "Explanations about each columns of the clients dataset".
 
 ### Architecture
-![Architecture](Architecture.png)
+![Architecture](Documents/Architecture.png)
 
 ### Components
 1. **Database**  
