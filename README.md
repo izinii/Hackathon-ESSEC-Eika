@@ -20,7 +20,7 @@ However, challenges remain around data quality, ethics, and compliance.
 
 Unlike competitors focused on claims or underwriting, AssurFlow provides real-time, proactive insurance recommendations to sales agents based on life events (for instance : moving, retirement, having a child). Instead of introducing yet another tool or overwhelming agents with unnecessary information, our solution presents tailored recommendations directly within their CRM. Sales agents can choose to act on these insights and contact the customer or disregard them based on their own assessment.
 
-### Database
+### Database (à améliorer)
 We used a customer database from Kaggle (https://www.kaggle.com/datasets/stealthtechnologies/regression-dataset-for-household-income-analysis). We completed it by filling it with more columns and fictional life events (for instance buying a home, having a child, changing jobs). Based on these events, the system generates personalized insurance recommendations, such as : "Your client X just purchased a home — consider offering them a tailored home insurance plan." 
 
 To see the detail of each column : see the PDF document named "Explanations about each columns of the clients dataset".
@@ -31,7 +31,7 @@ We then added the dataset in AWS S3 and Redshift.
 ### Architecture
 ![Architecture](Architecture.png)
 
-### Agents
+### Agents (à améliorer)
 Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
 + PDF document named "The different types of insurance contracts and details".
@@ -40,7 +40,7 @@ Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
 We chose the models : 
 
-### Backend & frontend
+### Backend & frontend (à améliorer)
 The backend : 
 - Loads customer data from Redshift
 - Calls the AI agents (Profile -> Recommendations -> Message)
@@ -54,7 +54,7 @@ We are building a fully interactive web application using Streamlit, designed fo
 We use Streamlit’s native hot-reload feature so the app updates instantly with every change.
 ...
 
-### Final schema
+### Final schema (à modifier ?)
 
 Database (S3, Redshift)
    ⇅
@@ -75,9 +75,6 @@ This model delivers strong value to insurers while generating a stable, diversif
 ### About confidentiality
 ...
 
-
-
-###
 
 
 ### UX/UI prototype (Figma)
