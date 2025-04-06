@@ -32,7 +32,7 @@ We then added the dataset in AWS S3 and Redshift.
 ...
 
 ### Architecture
-(image)
+![Architecture](Architecture.png)
 
 ### Agents
 Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
@@ -41,7 +41,7 @@ Connected via Amazon Bedrock (Claude 3.5, Titan...), orchestrated with Python.
 
 ...
 
-We chose Amazon Titan Text Express for its balance of performance, reliability, and enterprise-grade data privacy. As part of AWS Bedrock, Titan ensures that all data processing complies with strict security and confidentiality standards, with no model training on customer data, and all inference happening in a controlled, fully managed environment. This makes it ideal for handling sensitive insurance-related information while delivering high-quality language understanding and generation.
+We chose the models : 
 
 ### Backend & frontend
 The backend : 
@@ -68,8 +68,12 @@ Backend Python (orchestration)
 Frontend Streamlit (UI)
 
 ### Business model
-A charged feature that is suggested to the client...
-...
+Our AI solution requires an initial investment covering development, CRM integration, cloud infrastructure, and customer support. To ensure sustainability, we adopt a hybrid model combining setup fees, subscriptions, and additional monetization.
+Insurers pay a one-time integration fee based on implementation complexity. Each agent using the AI subscribes to a monthly plan, ensuring predictable revenue.
+
+To offset potential lossesfo insurrance company from contract adjustments, we offer a premium option that provides continuous monitoring and personalized recommendations. The AI also enhances cross-selling by suggesting complementary policies, increasing revenue per customer while boosting retention.
+
+This model delivers strong value to insurers while generating a stable, diversified revenue stream, reshaping the insurance experience for all stakeholders.
 
 ### About confidentiality
 ...
