@@ -145,7 +145,7 @@ def invoke_mistral(prompt, temperature=0.5, model_id="mistral.mistral-large-2407
 def run_agents_a1_claude_a2_mistral():
     client_rows = get_table_sample()
     if not isinstance(client_rows, list):
-        print("❌ Erreur dans la récupération des clients.")
+        print("Erreur dans la récupération des clients.")
         return
 
     columns_text = load_pdf_text("Explanations_about_each_columns_of_the_clients_dataset.pdf")
@@ -317,7 +317,7 @@ def send_email_mailhog(sender_email, recipient_email, subject, body):
 
 
 
-if __name__ == "__main__":
+def final_run(): 
     # Lancer A1 et A2 en parallèle
     results = run_agents_a1_claude_a2_mistral()
 
@@ -354,3 +354,19 @@ if __name__ == "__main__":
         subject="[AssurFlow] Final recommendations for insurance adjustments",
         body=email_body
     )
+
+
+    return {
+        "A1 (Claude)": results.get("A1 (Claude)", ""),
+        "A2 (Mistral)": results.get("A2 (Mistral)", ""),
+        "Consensus": consensus,
+        "Agent C": agent_c_output,
+        "Email": email_body
+    }
+
+
+
+
+
+if __name__ == "__main__":
+    final_run()

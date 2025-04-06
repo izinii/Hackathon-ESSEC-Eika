@@ -998,7 +998,7 @@ Client_ID,Auto_Insurance_Contract,Health_Insurance_Contract,Home_Insurance_Contr
 997,1,0,1,1,84450,508,Average,1,Accident,12/02/2025,Fast,0.45,13,0,Fragile,High,New Baby,26/10/2023,66,60000,On-site,1,Rent,Single-family home,1,Urban,Car,04/11/2024,429,353
 998,0,1,1,0,11103,176,Excellent,0,,,,,4,0,Fragile,Poor,Health Issue,14/03/2024,52,18000,On-site,1,Own,Townhouse,0,Urban,Walking,19/02/2024,290,228
 999,0,0,0,1,78300,431,Poor,1,General,31/03/2025,Fast,0.03,2,0,Fragile,High,Moved,18/04/2023,69,60000,Remote,0,Rent,Townhouse,1,Suburban,Car,31/03/2025,9,105
-1000,1,1,0,1,11403,728,Poor,2,Accident,31/01/2024,Conflicting,0.47,11,0,Good,Medium,Marriage,03/06/2024,32,35000,Remote,1,Rent,Single-family home,1,Urban,Car,26/04/2024,94,274
+1000,1,1,0,1,11403,728,Poor,2,Accident,31/01/2024,Conflicting,0.47,11,0,Good,Medium,Moved,2024-03-06,32,35000,Employed,1,Owner,House,1,Urban,Car,26/04/2024,94,274
 1001,1,0,0,0,95574,690,Average,0,,,,,5,0,Fragile,High,Marriage,22/09/2023,64,18000,Remote,1,Own,Single-family home,1,Urban,Biking,08/08/2024,322,161
 1002,1,1,0,0,90595,732,Poor,2,Accident,16/09/2023,Conflicting,0.08,4,0,Fragile,High,Health Issue,17/05/2024,39,35000,On-site,1,Own,Apartment,0,Urban,Car,29/12/2024,133,126
 1003,1,1,1,0,59763,679,Average,0,,,,,11,0,Good,Poor,Job Change,16/05/2024,31,35000,Unemployed,0,Own,Apartment,1,Suburban,Car,12/08/2024,352,25
