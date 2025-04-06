@@ -78,4 +78,7 @@ This model delivers strong value to insurers while generating a stable, diversif
 
 
 ### UX/UI prototype (Figma)
-https://www.figma.com/proto/9PYtKRSmSfxNUBcYdC8OR6/Assur-Flow-Prototype-dev-version?node-id=0-1&t=ZEaL5GMef2NjhYB3-1 
+[https://www.figma.com/proto/9PYtKRSmSfxNUBcYdC8OR6/Assur-Flow-Prototype-dev-version?node-id=0-1&t=ZEaL5GMef2NjhYB3-1](https://www.figma.com/proto/9PYtKRSmSfxNUBcYdC8OR6/Assur-Flow-Prototype-dev-version?node-id=0-1&t=ZEaL5GMef2NjhYB3-1)
+
+### Enhancements
+
